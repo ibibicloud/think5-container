@@ -54,7 +54,6 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
      */
     protected $bind = [
         'app'                   => App::class,
-        'build'                 => Build::class,
         'cache'                 => Cache::class,
         'config'                => Config::class,
         'cookie'                => Cookie::class,
@@ -69,7 +68,6 @@ class Container implements ArrayAccess, IteratorAggregate, Countable
         'session'               => Session::class,
         'template'              => Template::class,
         'url'                   => Url::class,
-        'validate'              => Validate::class,
         'view'                  => View::class,
         'rule_name'             => route\RuleName::class,
     ];
