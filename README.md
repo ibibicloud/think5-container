@@ -1,29 +1,35 @@
 
-# PHP Container & Facade Manager
-从thinkphp5.1.42剥离的container
+## PHP Container & Facade Manager
+从 thinkphp=v5.1.42 剥离的 container
 
-## 安装
+### 安装
 ~~~
-composer require ibibicloud/think5-container
+composer require ibibicloud/tp5-container
 ~~~
 
-## Container
+### Container 用法
 ~~~
 // 获取容器实例
 $container = \think\Container::getInstance();
 
-// 从容器中获取对象的唯一实例
+// 从容器中获取对象的唯一实例，没有则自动实例化
 $container->get('cache');
-
-// 从容器中获取对象，没有则自动实例化
-$container->make('cache');
 
 // 删除容器中的对象实例
 $container->delete('cache');
 ~~~
 
-## Facade
-定义一个app\facade\App类之后，即可以静态方式调用\think\App类的动态方法
+支持获取其他命名空间的类
+~~~
+$config = [
+    'a' => '20180910000205172',
+    'b' => 'OioYxFWLz5ZwHbIUX',
+];
+$container = \think\Container::get('\ibibicloud\Demo', [$config]);
+$container->hello('aaaaaa');
+~~~
+
+### Facade 用法
 ~~~
 <?php
 
@@ -37,6 +43,8 @@ class App
     }
 }
 ~~~
+
+定义一个app\facade\App类
 ~~~
 <?php
 
@@ -57,7 +65,8 @@ class App extends Facade
     }
 }
 ~~~
-然后就可以静态方式调用动态方法了
+
+然后就可以静态方式调用\think\App类的动态方法
 ~~~
 <?php
 
